@@ -26,4 +26,10 @@ contract ConstantsAndImmutables {
         MY_IMMUTABLE_ADDRESS = msg.sender;
         MY_IMMUTABLE_UINT = _myUint;
     }
+
+    /** NOTE
+    NOT: Compared to regular state variables, 
+    the gas costs of constant and immutable variables are much lower. 
+    And This allows for local optimization.
+     */
 }
