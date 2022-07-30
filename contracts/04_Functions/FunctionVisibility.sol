@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.5.0 <0.9.0;
 
-contract FunctionVisibility {
+contract BaseContract {
     /**
     Functions and state variables have to declare whether they are accessible by other contracts. 
     There are 4 visibility specifiers for functions and state variables: */
@@ -70,14 +70,14 @@ contract FunctionVisibility {
 
 /**-----------------Derive------------------ */
 
-contract DerivedContract is FunctionVisibility {
+contract DerivedContract is BaseContract {
     int256 public xx = get_x_internally(); // can call an internal function
     // int public yy = get_x_privately(); // ERROR => get_x_privately() is private and cannot be called from derived contracts
 }
 
 contract TestContract {
-    FunctionVisibility public functionVisibility = new FunctionVisibility(); // TestContract deploys FunctionVisibility
-    int256 public xx = functionVisibility.get_x_externally(); // OK => get_x_externally() is external
-    // int public y = derivedContract.get_x_privately(); // ERROR => get_x_privately() is private
-    // int public yy = derivedContract.get_x_internally; // ERROR => get_x_internally() is internal
+    BaseContract public baseContract = new BaseContract(); // TestContract deploys FunctionVisibility
+    int256 public xx = baseContract.get_x_externally(); // OK => get_x_externally() is external
+    // int public y = baseContract.get_x_privately(); // ERROR => get_x_privately() is private
+    // int public yy = baseContract.get_x_internally; // ERROR => get_x_internally() is internal
 }
