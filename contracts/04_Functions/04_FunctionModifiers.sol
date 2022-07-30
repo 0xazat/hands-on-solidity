@@ -44,7 +44,7 @@ contract FunctionModifiers {
     }
 
     // can use multiple modifiers
-    function chnageOwner(address _newOwner)
+    function changeOwner(address _newOwner)
         public
         onlyOwner
         validAddress(_newOwner)
