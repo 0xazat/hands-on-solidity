@@ -54,7 +54,7 @@ contract Events {
         string indexed _message
     ) anonymous;
 
-    /**  NOT;
+    /**  @notice;
     - The developer must understand that the transaction log does not keep information whether 
     the event is anonymous or not. 
     - All that are recorded are the indexed values as topics and the non-indexed values as data. 
